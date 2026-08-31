@@ -1,19 +1,20 @@
 #include<iostream>
 using namespace std;
 
-void bubbleSort(int arr[], int n) {
+void recursiveBubbleSort(int arr[], int n) {
+    if (n == 1) {
+        return;
+    }
     for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
+        if (arr[i] > arr[i + 1]) {
+            int temp = arr[i];
+            arr[i] = arr[i + 1];
+            arr[i + 1] = temp;
         }
     }
-}
-
-int main() {
+    recursiveBubbleSort(arr, n - 1);
+}                       
+int main(){
     int n;
     cout << "Enter the number of elements: ";
     cin >> n;
@@ -24,7 +25,7 @@ int main() {
         cin >> arr[i];
     }
 
-    bubbleSort(arr, n);
+    recursiveBubbleSort(arr, n);
 
     cout << "Sorted array: ";
     for (int i = 0; i < n; i++) {
